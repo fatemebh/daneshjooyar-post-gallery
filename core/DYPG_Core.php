@@ -10,7 +10,8 @@
  * Core class for "daneshjooyar post gallery" plugin
  *
  * @author Hamed Moodi
- * @uses http://www.jqueryscript.net/gallery/Basic-Responsive-Gallery-Lightbox-Plugin-lightweightLightbox.html
+ * @uses http://www.jqueryscript.net/gallery/Tiny-Responsive-Lightbox-Gallery-Plugin-For-jQuery-Viewbox.html
+ * @uses http://www.jqueryscript.net/lightbox/Lightweight-Customizable-Lightbox-Plugin-ColorBox.html
  */
 class DYPG_Core {
     
@@ -110,10 +111,12 @@ class DYPG_Core {
         add_action( 'wp_enqueue_scripts', function() {
             
             wp_register_script('viewbox', DYPG_JS . 'jquery.viewbox.min.js', array( 'jquery' ), $this->version, true);
-            wp_enqueue_script('dy-public-script', DYPG_JS . 'public.js', array( 'jquery', 'viewbox'), $this->version, 'all');
+            wp_register_script('colorbox', DYPG_JS . 'jquery.colorbox.min.js', array( 'jquery' ), $this->version, true);
+            wp_enqueue_script('dy-public-script', DYPG_JS . 'public.js', array( 'jquery', 'viewbox', 'colorbox'), $this->version, 'all');
 
             wp_register_style('viewbox', DYPG_CSS . 'viewbox.css',array(), $this->version, 'all');
-            wp_enqueue_style('dy-public-style', DYPG_CSS . 'public.css',array( 'viewbox' ), $this->version, 'all');
+            wp_register_style('colorbox', DYPG_CSS . 'colorbox/theme-3/colorbox.css',array(), $this->version, 'all');
+            wp_enqueue_style('dy-public-style', DYPG_CSS . 'public.css',array( 'viewbox', 'colorbox' ), $this->version, 'all');
         } );
     }
     

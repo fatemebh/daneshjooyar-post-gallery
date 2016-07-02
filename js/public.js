@@ -1,5 +1,5 @@
 jQuery(document).ready(function( $ ){
-	$('.viewbox-thumbnail').viewbox({
+	/*$('.viewbox-thumbnail').viewbox({
 			setTitle: true,
 			margin: 20,
 			resizeDuration: 300,
@@ -9,5 +9,6 @@ jQuery(document).ready(function( $ ){
 			navButtons: true,
 			closeOnSideClick: true,
 			nextOnContentClick: true
-	});
+	});*/
+	$(".thumbnail").colorbox({rel:'thumbnail', transition:"elastic"});
 });
