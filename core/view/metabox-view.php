@@ -1,6 +1,15 @@
 <div class="shortcode-help">
 	<?php _e('Use <span>[dy-post-gallery]</span> shortcode in post for showing this gallery', 'daneshjooyar-post-gallery');?>
 </div>
+<div class="settings">
+	<p><?php _e('Select ColorBox theme: ', 'daneshjooyar-post-gallery');?></p>
+	<?php foreach( range(1, 5) as $index ):?>
+		<div>
+		  	<input id="cb-theme-<?php echo $index;?>" type="radio" name="colorbox_theme" value="theme-<?php echo $index;?>" <?php checked( $dy_post_colorbox_gallery_theme, 'theme-' . $index );?>>
+		  	<label for="cb-theme-<?php echo $index;?>"><?php printf(__( 'Theme %d', 'daneshjooyar-post-gallery'), $index);?></label>
+		</div>
+	<?php endforeach;?>
+</div>
 <ul>
 <?php foreach( $dy_post_gallery_images as $url ):?>
 	<li>

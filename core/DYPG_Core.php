@@ -113,9 +113,25 @@ class DYPG_Core {
             wp_register_script('viewbox', DYPG_JS . 'jquery.viewbox.min.js', array( 'jquery' ), $this->version, true);
             wp_register_script('colorbox', DYPG_JS . 'jquery.colorbox.min.js', array( 'jquery' ), $this->version, true);
             wp_enqueue_script('dy-public-script', DYPG_JS . 'public.js', array( 'jquery', 'viewbox', 'colorbox'), $this->version, 'all');
+            
+
+            /**
+             * Register colorbox style base on selected theme for each post if is single page
+             */
+            
+            /**
+             * set Default Color Box theme name
+             * @var string
+             */
+            $colorBoxTheme = 'theme-1';
+            //Get selected theme for each post
+            if( is_single() ){
+                global $post;
+                $colorBoxTheme = get_post_meta( get_the_ID(), '_dy_post_gallery_theme', true );
+            }
 
             wp_register_style('viewbox', DYPG_CSS . 'viewbox.css',array(), $this->version, 'all');
-            wp_register_style('colorbox', DYPG_CSS . 'colorbox/theme-3/colorbox.css',array(), $this->version, 'all');
+            wp_register_style('colorbox', DYPG_CSS . 'colorbox/' . $colorBoxTheme . '/colorbox.css',array(), $this->version, 'all');
             wp_enqueue_style('dy-public-style', DYPG_CSS . 'public.css',array( 'viewbox', 'colorbox' ), $this->version, 'all');
         } );
     }
@@ -138,6 +154,10 @@ class DYPG_Core {
     public function gallery_metabox_view( $post ){
         $dy_post_gallery_images = get_post_meta( $post->ID, 'dy_post_gallery', true );
         $dy_post_gallery_images = $dy_post_gallery_images ? $dy_post_gallery_images : array();
+
+        $dy_post_colorbox_gallery_theme  = get_post_meta( $post->ID, '_dy_post_gallery_theme', true);
+        $dy_post_colorbox_gallery_theme  = $dy_post_colorbox_gallery_theme ? $dy_post_colorbox_gallery_theme : 'theme-1';
+
         include_once( DYPG_DIR . 'core/view/metabox-view.php' );
     }
 
@@ -153,6 +173,10 @@ class DYPG_Core {
                 }
             }, $_POST['dy_post_gallery_image_url']);
             update_post_meta( $post_id, 'dy_post_gallery', $filtered );
+
+            $colorbox_gallery_theme = in_array( $_POST['colorbox_theme'], array('theme-1', 'theme-2', 'theme-3', 'theme-4', 'theme-5')) ? $_POST['colorbox_theme'] : 'theme-1';
+            update_post_meta( $post_id, '_dy_post_gallery_theme', $colorbox_gallery_theme );
+
         }
     }
 
