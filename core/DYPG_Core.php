@@ -10,7 +10,6 @@
  * Core class for "daneshjooyar post gallery" plugin
  *
  * @author Hamed Moodi
- * @uses http://www.jqueryscript.net/gallery/Tiny-Responsive-Lightbox-Gallery-Plugin-For-jQuery-Viewbox.html
  * @uses http://www.jqueryscript.net/lightbox/Lightweight-Customizable-Lightbox-Plugin-ColorBox.html
  */
 class DYPG_Core {
@@ -110,9 +109,8 @@ class DYPG_Core {
          */
         add_action( 'wp_enqueue_scripts', function() {
             
-            wp_register_script('viewbox', DYPG_JS . 'jquery.viewbox.min.js', array( 'jquery' ), $this->version, true);
             wp_register_script('colorbox', DYPG_JS . 'jquery.colorbox.min.js', array( 'jquery' ), $this->version, true);
-            wp_enqueue_script('dy-public-script', DYPG_JS . 'public.js', array( 'jquery', 'viewbox', 'colorbox'), $this->version, 'all');
+            wp_enqueue_script('dy-public-script', DYPG_JS . 'public.js', array( 'jquery', 'colorbox'), $this->version, 'all');
             
 
             /**
@@ -127,12 +125,14 @@ class DYPG_Core {
             //Get selected theme for each post
             if( is_single() ){
                 global $post;
-                $colorBoxTheme = get_post_meta( get_the_ID(), '_dy_post_gallery_theme', true );
+                $colorBoxThemeSetting = get_post_meta( get_the_ID(), '_dy_post_gallery_theme', true );
+                if( $colorBoxThemeSetting ){
+                    $colorBoxTheme = $colorBoxThemeSetting;
+                }
             }
 
-            wp_register_style('viewbox', DYPG_CSS . 'viewbox.css',array(), $this->version, 'all');
             wp_register_style('colorbox', DYPG_CSS . 'colorbox/' . $colorBoxTheme . '/colorbox.css',array(), $this->version, 'all');
-            wp_enqueue_style('dy-public-style', DYPG_CSS . 'public.css',array( 'viewbox', 'colorbox' ), $this->version, 'all');
+            wp_enqueue_style('dy-public-style', DYPG_CSS . 'public.css',array( 'colorbox' ), $this->version, 'all');
         } );
     }
     
