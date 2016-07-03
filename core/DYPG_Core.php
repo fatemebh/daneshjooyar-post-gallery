@@ -110,6 +110,14 @@ class DYPG_Core {
         add_action( 'wp_enqueue_scripts', function() {
             
             wp_register_script('colorbox', DYPG_JS . 'jquery.colorbox.min.js', array( 'jquery' ), $this->version, true);
+            wp_localize_script('colorbox', 'colorboxLocalize', array(
+                    'next'      => __('Next', 'daneshjooyar-post-gallery'),
+                    'previous'  => __('Previous', 'daneshjooyar-post-gallery'),
+                    'close'     => __('Close', 'daneshjooyar-post-gallery'),
+                    'imgErr'    => __('This image failed to load.', 'daneshjooyar-post-gallery'),
+                    'xhrError'  => __('This content failed to load.', 'daneshjooyar-post-gallery'),
+                    'current'   => __('image {current} of {total}', 'daneshjooyar-post-gallery'),
+                ));
             wp_enqueue_script('dy-public-script', DYPG_JS . 'public.js', array( 'jquery', 'colorbox'), $this->version, 'all');
             
 
