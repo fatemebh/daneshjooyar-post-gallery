@@ -6,6 +6,8 @@
  * Author URI: http://ircodex.ir
  * Description: this is simple plugin for add gallery for any post such as product gallery
  * Version: 1.0.0
+ * License: GPL2
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: daneshjooyar-post-gallery
  * Domain Path: /languages
  */
