@@ -11,12 +11,12 @@
 	<?php endforeach;?>
 </div>
 <ul>
-<?php foreach( $dy_post_gallery_images as $url ):?>
+<?php foreach( $dy_post_gallery_images as $aid ):?>
 	<li>
 		<div class="dy-post-gallery-image">
-			<img src="<?php echo esc_url( $url );?>" width="100" height="100"/>
+			<img src="<?php echo wp_get_attachment_thumb_url( $aid );?>" width="100" height="100"/>
 			<a href="#" class="dy-post-gallery-delete">x</a>
-			<input type="hidden" name="dy_post_gallery_image_url[]" value="<?php echo esc_url( $url );?>"/>
+			<input type="hidden" name="dy_post_gallery_image_url[]" value="<?php echo $aid;?>"/>
 		</div>
 	</li>
 <?php endforeach;?>

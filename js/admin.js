@@ -41,8 +41,9 @@ jQuery(document).ready(function( $ ){
 
             var selection = file_frame.state().get('selection');
             selection.map(function(attachment) {
+                console.log(attachment);
                 var image_data = attachment.toJSON();
-                $('<li><div class="dy-post-gallery-image"><img src="' + image_data.url + '" width="100" height="100"/><a href="#" class="dy-post-gallery-delete">x</a><input type="hidden" name="dy_post_gallery_image_url[]" value="' + image_data.url + '"/></div></li>')
+                $('<li><div class="dy-post-gallery-image"><img src="' + image_data.sizes.thumbnail.url + '" width="100" height="100"/><a href="#" class="dy-post-gallery-delete">x</a><input type="hidden" name="dy_post_gallery_image_url[]" value="' + image_data.id + '"/></div></li>')
                 .insertBefore($('#dy-post-gallery-metabox ul li:last')).closest('ul').sortable();
               });
 

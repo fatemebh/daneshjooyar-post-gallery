@@ -1,6 +1,6 @@
 .colorbox-container-images .box {
-    width: 18%;
-    height: auto;
+    width: 64px;
+    height: 64px;
     border: 1px solid #ededed;
     -webkit-border-radius: 2px;
     -moz-border-radius: 2px;
@@ -9,10 +9,16 @@
     padding: 5px;
     margin: 5px;
     background: #f8f8f8;
-    float: right;
+    float: left;
 }
 
 .colorbox-container-images .box img{
 	display: block;
 	margin: auto;
+    width: 100%;
+    height: auto;
+}
+
+body.rtl .colorbox-container-images .box {
+    float: right;
 }

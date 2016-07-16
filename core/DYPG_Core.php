@@ -175,9 +175,10 @@ class DYPG_Core {
      */
     public function save_meta_box( $post_id ) {
         if( isset( $_POST['dy_post_gallery_image_url'] ) && current_user_can('edit_post') && wp_verify_nonce( $_POST['dy_post_gallery_nonce'], $post_id . get_current_user_id() )) {
-            $filtered = array_map(function( $url ){
-                if( strlen($url) > 0 ){
-                    return esc_url_raw( $url );
+            $filtered = array_map(function( $aid ){
+                $attachmentId = absint($aid);
+                if( $attachmentId ){
+                    return $attachmentId;
                 }
             }, $_POST['dy_post_gallery_image_url']);
             update_post_meta( $post_id, '_dy_post_gallery', $filtered );
