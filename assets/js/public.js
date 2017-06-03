@@ -1,3 +1,3 @@
 jQuery(document).ready(function( $ ){
-	$( '.swipebox' ).swipebox();
+	$( '.swipebox' ).swipebox({rtl: true});
 });
