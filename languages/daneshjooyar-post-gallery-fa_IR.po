@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Daneshjooyar post Gallery\n"
-"POT-Creation-Date: 2016-07-03 07:07+0430\n"
-"PO-Revision-Date: 2016-07-03 07:08+0430\n"
+"POT-Creation-Date: 2017-06-03 08:29+0430\n"
+"PO-Revision-Date: 2017-06-03 08:30+0430\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fa_IR\n"
@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 1.8.8\n"
+"X-Generator: Poedit 2.0.2\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-WPHeader: dy-post-gallery.php\n"
 "X-Poedit-SourceCharset: UTF-8\n"
@@ -20,31 +20,7 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 
-#: core/DYPG_Core.php:114
-msgid "Next"
-msgstr "بعدی"
-
-#: core/DYPG_Core.php:115
-msgid "Previous"
-msgstr "قبلی"
-
-#: core/DYPG_Core.php:116
-msgid "Close"
-msgstr "بستن"
-
-#: core/DYPG_Core.php:117
-msgid "This image failed to load."
-msgstr "خطا در بارگذاری تصویر"
-
-#: core/DYPG_Core.php:118
-msgid "This content failed to load."
-msgstr "خطا در بارگذازی محتوا"
-
-#: core/DYPG_Core.php:119
-msgid "image {current} of {total}"
-msgstr "تصویر {current} از {total}"
-
-#: core/DYPG_Core.php:153
+#: core/DYPG_Core.php:134
 msgid "Post gallery"
 msgstr "گالری پست"
 
@@ -53,15 +29,6 @@ msgid ""
 "Use <span>[dy-post-gallery]</span> shortcode in post for showing this gallery"
 msgstr ""
 "از کد کوتاه <span>[dy-post-gallery] برای نمایش گالری در پست استفاده کنید"
-
-#: core/view/metabox-view.php:5
-msgid "Select ColorBox theme: "
-msgstr "پوسته ColorBox را انتخاب کنید:"
-
-#: core/view/metabox-view.php:9
-#, php-format
-msgid "Theme %d"
-msgstr "پوسته %d"
 
 #. Plugin Name of the plugin/theme
 msgid "Daneshjooyar post Gallery"
@@ -83,3 +50,27 @@ msgstr "حامد مودی"
 #. Author URI of the plugin/theme
 msgid "http://ircodex.ir"
 msgstr ""
+
+#~ msgid "Next"
+#~ msgstr "بعدی"
+
+#~ msgid "Previous"
+#~ msgstr "قبلی"
+
+#~ msgid "Close"
+#~ msgstr "بستن"
+
+#~ msgid "This image failed to load."
+#~ msgstr "خطا در بارگذاری تصویر"
+
+#~ msgid "This content failed to load."
+#~ msgstr "خطا در بارگذازی محتوا"
+
+#~ msgid "image {current} of {total}"
+#~ msgstr "تصویر {current} از {total}"
+
+#~ msgid "Select ColorBox theme: "
+#~ msgstr "پوسته ColorBox را انتخاب کنید:"
+
+#~ msgid "Theme %d"
+#~ msgstr "پوسته %d"

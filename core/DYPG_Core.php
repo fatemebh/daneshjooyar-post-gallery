@@ -10,7 +10,7 @@
  * Core class for "daneshjooyar post gallery" plugin
  *
  * @author Hamed Moodi
- * @uses http://www.jqueryscript.net/lightbox/Lightweight-Customizable-Lightbox-Plugin-ColorBox.html
+ * @uses https://github.com/brutaldesign/swipebox
  */
 class DYPG_Core {
     
@@ -109,38 +109,19 @@ class DYPG_Core {
          */
         add_action( 'wp_enqueue_scripts', function() {
             
-            wp_register_script('colorbox', DYPG_JS . 'jquery.colorbox.min.js', array( 'jquery' ), $this->version, true);
-            wp_localize_script('colorbox', 'colorboxLocalize', array(
-                    'next'      => __('Next', 'daneshjooyar-post-gallery'),
-                    'previous'  => __('Previous', 'daneshjooyar-post-gallery'),
-                    'close'     => __('Close', 'daneshjooyar-post-gallery'),
-                    'imgErr'    => __('This image failed to load.', 'daneshjooyar-post-gallery'),
-                    'xhrError'  => __('This content failed to load.', 'daneshjooyar-post-gallery'),
-                    'current'   => __('image {current} of {total}', 'daneshjooyar-post-gallery'),
+            wp_register_script('swipebox', DYPG_JS . 'jquery.swipebox.min.js', array( 'jquery' ), $this->version, true);
+            wp_localize_script('swipebox', 'swipeboxSettings', array(
+                    
                 ));
-            wp_enqueue_script('dy-public-script', DYPG_JS . 'public.js', array( 'jquery', 'colorbox'), $this->version, 'all');
+            wp_enqueue_script('dy-public-script', DYPG_JS . 'public.js', array( 'jquery', 'swipebox'), $this->version, 'all');
             
 
             /**
-             * Register colorbox style base on selected theme for each post if is single page
+             * Register swipebox style base on selected theme for each post if is single page
              */
-            
-            /**
-             * set Default Color Box theme name
-             * @var string
-             */
-            $colorBoxTheme = 'theme-1';
-            //Get selected theme for each post
-            if( is_single() ){
-                global $post;
-                $colorBoxThemeSetting = get_post_meta( get_the_ID(), '_dy_post_gallery_theme', true );
-                if( $colorBoxThemeSetting ){
-                    $colorBoxTheme = $colorBoxThemeSetting;
-                }
-            }
 
-            wp_register_style('colorbox', DYPG_CSS . 'colorbox/' . $colorBoxTheme . '/colorbox.css',array(), $this->version, 'all');
-            wp_enqueue_style('dy-public-style', DYPG_CSS . 'public.css',array( 'colorbox' ), $this->version, 'all');
+            wp_register_style('swipebox', DYPG_CSS . 'swipebox.min.css',array(), $this->version, 'all');
+            wp_enqueue_style('dy-public-style', DYPG_CSS . 'public.css',array( 'swipebox' ), $this->version, 'all');
         } );
     }
     
@@ -160,13 +141,12 @@ class DYPG_Core {
      * @param  WP_Post  $post  post object
      */
     public function gallery_metabox_view( $post ){
+
         $dy_post_gallery_images = get_post_meta( $post->ID, '_dy_post_gallery', true );
         $dy_post_gallery_images = $dy_post_gallery_images ? $dy_post_gallery_images : array();
 
-        $dy_post_colorbox_gallery_theme  = get_post_meta( $post->ID, '_dy_post_gallery_theme', true);
-        $dy_post_colorbox_gallery_theme  = $dy_post_colorbox_gallery_theme ? $dy_post_colorbox_gallery_theme : 'theme-1';
-
         include_once( DYPG_DIR . 'core/view/metabox-view.php' );
+
     }
 
     /**
@@ -182,9 +162,6 @@ class DYPG_Core {
                 }
             }, $_POST['dy_post_gallery_image_url']);
             update_post_meta( $post_id, '_dy_post_gallery', $filtered );
-
-            $colorbox_gallery_theme = in_array( $_POST['colorbox_theme'], array('theme-1', 'theme-2', 'theme-3', 'theme-4', 'theme-5')) ? $_POST['colorbox_theme'] : 'theme-1';
-            update_post_meta( $post_id, '_dy_post_gallery_theme', $colorbox_gallery_theme );
 
         }
     }

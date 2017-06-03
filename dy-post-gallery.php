@@ -27,9 +27,9 @@ define( 'DYPG_DIR', plugin_dir_path( __FILE__ ) );
 /*
  * Plugin url path
  */
-define( 'DYPG_CSS', plugin_dir_url( __FILE__ ) . 'css/' );
-define( 'DYPG_JS', plugin_dir_url( __FILE__ ) . 'js/' );
-define( 'DYPG_IMG', plugin_dir_url( __FILE__ ) . 'images/' );
+define( 'DYPG_CSS', plugin_dir_url( __FILE__ ) . 'assets/css/' );
+define( 'DYPG_JS', plugin_dir_url( __FILE__ ) . 'assets/js/' );
+define( 'DYPG_IMG', plugin_dir_url( __FILE__ ) . 'assets/img/' );
 
 include( DYPG_DIR . 'core/DYPG_Core.php' );
 

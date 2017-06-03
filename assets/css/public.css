@@ -1,4 +1,4 @@
-.colorbox-container-images .box {
+.swipebox-container-images .swipebox {
     width: 64px;
     border: 1px solid #ededed;
     -webkit-border-radius: 2px;
@@ -11,13 +11,13 @@
     float: left;
 }
 
-.colorbox-container-images .box img{
+.swipebox-container-images .swipebox img{
 	display: block;
 	margin: auto;
     width: 100%;
     height: auto;
 }
 
-body.rtl .colorbox-container-images .box {
+body.rtl .swipebox-container-images .swipebox {
     float: right;
 }
