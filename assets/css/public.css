@@ -1,5 +1,6 @@
 .swipebox-container-images .swipebox {
     width: 64px;
+    height: 64px;
     border: 1px solid #ededed;
     -webkit-border-radius: 2px;
     -moz-border-radius: 2px;
@@ -8,7 +9,9 @@
     padding: 5px;
     margin: 5px;
     background: #f8f8f8;
-    float: left;
+    display: inline-flex;
+    align-items: center;
+  justify-content: center;
 }
 
 .swipebox-container-images .swipebox img{
@@ -16,8 +19,4 @@
 	margin: auto;
     width: 100%;
     height: auto;
-}
-
-body.rtl .swipebox-container-images .swipebox {
-    float: right;
 }
