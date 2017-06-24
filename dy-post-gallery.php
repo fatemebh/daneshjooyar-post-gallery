@@ -5,7 +5,7 @@
  * Author: Hamed Moodi
  * Author URI: http://ircodex.ir
  * Description: this is simple plugin for add gallery for any post such as product gallery
- * Version: 1.0.0
+ * Version: 1.0.1
  * License: GPL2
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: daneshjooyar-post-gallery
@@ -14,25 +14,32 @@
 
 defined(  'ABSPATH'  ) || exit;
 
-/*
+/**
  * Base contants
  */
 define( 'DYPG_VER', '1.0.0' );
 
-/*
+/**
  * Plugin absolute patth
  */
 define( 'DYPG_DIR', plugin_dir_path( __FILE__ ) );
 
-/*
+/**
  * Plugin url path
  */
 define( 'DYPG_CSS', plugin_dir_url( __FILE__ ) . 'assets/css/' );
 define( 'DYPG_JS', plugin_dir_url( __FILE__ ) . 'assets/js/' );
 define( 'DYPG_IMG', plugin_dir_url( __FILE__ ) . 'assets/img/' );
 
+/**
+ * Load plugin core
+ */
 include( DYPG_DIR . 'core/DYPG_Core.php' );
 
+/**
+ * Instantiate plugin core
+ * @var DYPG_Core
+ */
 $dypgCore = new DYPG_Core( DYPG_VER );
 
 /**

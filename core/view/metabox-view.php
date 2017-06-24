@@ -3,9 +3,17 @@
 </div>
 <ul>
 <?php foreach( $dy_post_gallery_images as $aid ):?>
+	<?php
+	$thumbnail_url = wp_get_attachment_thumb_url( $aid );
+	if( wp_attachment_is( 'video', $aid ) ){
+		$thumbnail_url = DYPG_IMG . 'play_icon.png';
+	}elseif( wp_attachment_is( 'audio', $aid ) ){
+		$thumbnail_url = DYPG_IMG . 'audio_icon.png';
+	}
+	?>
 	<li>
-		<div class="dy-post-gallery-image">
-			<img src="<?php echo wp_get_attachment_thumb_url( $aid );?>" width="100" height="100"/>
+		<div class="dy-post-gallery-image" title="<?php echo esc_attr( get_the_title( $aid ) );?>">
+			<img src="<?php echo $thumbnail_url;?>" height="100"/>
 			<a href="#" class="dy-post-gallery-delete">x</a>
 			<input type="hidden" name="dy_post_gallery_image_url[]" value="<?php echo $aid;?>"/>
 		</div>

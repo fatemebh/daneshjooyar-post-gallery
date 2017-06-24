@@ -29,7 +29,7 @@ class DYPG_Core {
     /**
      * @param String plugin version
      */
-    public function __construct($version) {
+    public function __construct( $version ) {
 
         //Set plugin version
         $this->version = $version;
@@ -98,6 +98,10 @@ class DYPG_Core {
                 //enqueue media upload core script
                 wp_enqueue_media();
                 wp_enqueue_script('dy-admin-script', DYPG_JS . 'admin.js', array( 'jquery', 'jquery-ui-core', 'jquery-ui-sortable' ), $this->version, true);
+                wp_localize_script( 'dy-admin-script', 'daneshjooyar_gallery', array(
+                        'video_icon'    => DYPG_IMG . 'play_icon.png',
+                    )
+                );
 
                 wp_enqueue_style( 'dy-admin-style', DYPG_CSS . 'admin.css', array(), $this->version, 'all' );
 
@@ -109,10 +113,15 @@ class DYPG_Core {
          */
         add_action( 'wp_enqueue_scripts', function() {
             
-            wp_register_script('swipebox', DYPG_JS . 'jquery.swipebox.min.js', array( 'jquery' ), $this->version, true);
+            wp_register_script('swipebox', 'http://localhost/jquery.swipebox.js', array( 'jquery' ), $this->version, true);
+            
+            /**
+             * Localize scrip if needed
+             */
             wp_localize_script('swipebox', 'swipeboxSettings', array(
                     
-                ));
+            ));
+
             wp_enqueue_script('dy-public-script', DYPG_JS . 'public.js', array( 'jquery', 'swipebox'), $this->version, 'all');
             
 
@@ -157,7 +166,7 @@ class DYPG_Core {
         if( isset( $_POST['dy_post_gallery_image_url'] ) && current_user_can('edit_post') && wp_verify_nonce( $_POST['dy_post_gallery_nonce'], $post_id . get_current_user_id() )) {
             $filtered = array_map(function( $aid ){
                 $attachmentId = absint($aid);
-                if( $attachmentId ){
+                if( $attachmentId && ( wp_attachment_is_image( $attachmentId ) || wp_attachment_is( 'video', $attachmentId ) || wp_attachment_is( 'audio', $attachmentId) ) ){
                     return $attachmentId;
                 }
             }, $_POST['dy_post_gallery_image_url']);

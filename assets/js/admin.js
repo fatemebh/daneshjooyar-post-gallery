@@ -32,7 +32,7 @@ jQuery(document).ready(function( $ ){
             frame   : 'post',
             state   : 'insert',
             library : {
-                type: 'image',
+                // type: 'media',
             },
             multiple: true
         });
@@ -41,10 +41,19 @@ jQuery(document).ready(function( $ ){
 
             var selection = file_frame.state().get('selection');
             selection.map(function(attachment) {
-                console.log(attachment);
-                var image_data = attachment.toJSON();
-                $('<li><div class="dy-post-gallery-image"><img src="' + image_data.sizes.thumbnail.url + '" width="100" height="100"/><a href="#" class="dy-post-gallery-delete">x</a><input type="hidden" name="dy_post_gallery_image_url[]" value="' + image_data.id + '"/></div></li>')
-                .insertBefore($('#dy-post-gallery-metabox ul li:last')).closest('ul').sortable();
+                var file_data = attachment.toJSON();
+                //console.log(file_data.sizes.thumbnail.url);
+                var mime = file_data.mime;
+                    console.log( file_data );
+                if( mime == 'video/mp4' ) {
+                    $('<li><div class="dy-post-gallery-image"><img src="' + daneshjooyar_gallery.video_icon + '" width="100" height="100"/><a href="#" class="dy-post-gallery-delete">x</a><input type="hidden" name="dy_post_gallery_image_url[]" value="' + file_data.id + '"/></div></li>')
+                    .insertBefore($('#dy-post-gallery-metabox ul li:last')).closest('ul').sortable();
+                } else {
+                    //console.log( mime );
+                    var thumbnail_url = file_data.sizes.thumbnail.url;
+                    $('<li><div class="dy-post-gallery-image"><img src="' + thumbnail_url + '" width="100" height="100"/><a href="#" class="dy-post-gallery-delete">x</a><input type="hidden" name="dy_post_gallery_image_url[]" value="' + file_data.id + '"/></div></li>')
+                    .insertBefore($('#dy-post-gallery-metabox ul li:last')).closest('ul').sortable();
+                }
               });
 
         });
