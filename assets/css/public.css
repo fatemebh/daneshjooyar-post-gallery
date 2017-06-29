@@ -2,6 +2,9 @@
     color: red;
 }
 
+.swipebox-container-images {
+    border: 1px solid #d3d3d3;
+}
 .swipebox-container-images .swipebox {
     border: 1px solid #ededed;
     -webkit-border-radius: 2px;

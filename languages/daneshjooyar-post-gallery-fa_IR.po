@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Daneshjooyar post Gallery\n"
-"POT-Creation-Date: 2017-06-03 08:29+0430\n"
-"PO-Revision-Date: 2017-06-03 08:30+0430\n"
+"POT-Creation-Date: 2017-06-29 16:20+0430\n"
+"PO-Revision-Date: 2017-06-29 16:20+0430\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fa_IR\n"
@@ -20,7 +20,7 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 
-#: core/DYPG_Core.php:134
+#: core/DYPG_Core.php:171
 msgid "Post gallery"
 msgstr "گالری پست"
 
@@ -29,6 +29,10 @@ msgid ""
 "Use <span>[dy-post-gallery]</span> shortcode in post for showing this gallery"
 msgstr ""
 "از کد کوتاه <span>[dy-post-gallery] برای نمایش گالری در پست استفاده کنید"
+
+#: core/view/metabox-view.php:30
+msgid "Slide To Show:"
+msgstr "تعداد اسلاید:"
 
 #. Plugin Name of the plugin/theme
 msgid "Daneshjooyar post Gallery"

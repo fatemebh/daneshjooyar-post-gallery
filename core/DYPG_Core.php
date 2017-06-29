@@ -27,6 +27,12 @@ class DYPG_Core {
     private $pages;
 
     /**
+     * post meta settings prefix
+     * @var string
+     */
+    private $setting_prefix = '_dypg_';
+
+    /**
      * @param String plugin version
      */
     public function __construct( $version ) {
@@ -117,18 +123,33 @@ class DYPG_Core {
          */
         add_action( 'wp_enqueue_scripts', function() {
             
+            /**
+             * Enqueue just for single page/post
+             */
+            if( ! is_singular() ) {
+                return;
+            }
+
+            /**
+             * Get current post id
+             * @var [type]
+             */
+            $post_id = get_the_ID();
+
             wp_register_script('swipebox', DYPG_JS . 'jquery.swipebox.min.js', array( 'jquery' ), $this->version, true);
             wp_register_script('slick', DYPG_JS . 'slick.min.js', array( 'jquery' ), $this->version, true);
+            
+
+            wp_enqueue_script('dypg-public-script', DYPG_JS . 'public.js', array( 'jquery', 'swipebox', 'slick'), $this->version, 'all');
             
             /**
              * Localize scrip if needed
              */
-            wp_localize_script('swipebox', 'swipeboxSettings', array(
-                    
-            ));
+            $slideToShow = get_post_meta( $post_id, '_dypg_slide_to_show', true );
 
-            wp_enqueue_script('dy-public-script', DYPG_JS . 'public.js', array( 'jquery', 'swipebox', 'slick'), $this->version, 'all');
-            
+            wp_localize_script('dypg-public-script', 'dypg_settings', array(
+                    'slidesToShow'  => $this->get_setting( 'slideToShow', 6 ),
+            ));
 
             /**
              * Register swipebox style base on selected theme for each post if is single page
@@ -179,6 +200,8 @@ class DYPG_Core {
             }, $_POST['dy_post_gallery_image_url']);
             update_post_meta( $post_id, '_dy_post_gallery', $filtered );
 
+            $this->set_setting( 'slideToShow',  absint( $_POST[ $this->setting_prefix . 'slide_to_show' ] ) );
+
         }
     }
 
@@ -198,6 +221,41 @@ class DYPG_Core {
         ob_start();
         include( DYPG_DIR . 'core/view/gallery-shortcode.php' );   
         return ob_get_clean();
+    }
+
+    /**
+     * Get Setting in post meta
+     * @param  string  $setting_id Setting id
+     * @param  integer $default    post ID
+     * @return Mix              
+     */
+    private function get_setting( $setting_id, $default = 0 ) {
+
+        global $post;
+
+        if( ! isset( $post ) ) {
+            return false;
+        }
+        
+        $value = get_post_meta( $post->ID, $this->setting_prefix . $setting_id, true );
+
+        return $value ? $value : $default;
+
+    }
+
+    /**
+     * Set new setting in post meta
+     * @param string $setting_id setting id
+     * @param Mix $new_value  new value
+     */
+    private function set_setting( $setting_id, $new_value ) {
+
+        if( ! get_the_ID() ) {
+            return false;
+        }
+
+        return update_post_meta( get_the_ID(), $this->setting_prefix . $setting_id, $new_value );
+
     }
 
 }

@@ -25,4 +25,10 @@
 		</div>
 	</li>
 </ul>
+<table class="widefat">
+	<tr>
+		<td><label for="<?php echo $this->setting_prefix;?>slide_to_show"><?php _e( 'Slide To Show:', 'daneshjooyar-post-gallery' );?></label></td>
+		<td><input type="number" id="<?php echo $this->setting_prefix;?>slide_to_show" name="<?php echo $this->setting_prefix;?>slide_to_show" min="3" max="12" value="<?php echo esc_attr( $this->get_setting( 'slideToShow', 6 ) );?>"></td>
+	</tr>
+</table>
 <?php wp_nonce_field( $post->ID . get_current_user_id(), 'dy_post_gallery_nonce', false ); ?>
