@@ -1,4 +1,3 @@
-<div style="clear: both;"></div>
 <div class="swipebox-container-images">
 	<?php foreach( $dy_post_gallery_images as $aid ):?>
 		<?php if( wp_attachment_is_image( $aid ) ):?>
@@ -12,4 +11,3 @@
 		<?php endif;?>
 	<?php endforeach;?>
 </div>
-<div style="clear: both;"></div>

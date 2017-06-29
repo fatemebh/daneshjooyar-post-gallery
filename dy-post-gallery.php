@@ -17,7 +17,7 @@ defined(  'ABSPATH'  ) || exit;
 /**
  * Base contants
  */
-define( 'DYPG_VER', '1.0.0' );
+define( 'DYPG_VER', '1.0.2' );
 
 /**
  * Plugin absolute patth

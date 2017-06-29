@@ -58,13 +58,17 @@ class DYPG_Core {
         /**
          * Add metaboxes
          */
-        $this->addMetaBoxes();
+        if( is_admin() ) {
+            $this->addMetaBoxes();
+        }
 
         /**
          * Save post metabox in database
          */
-        add_action( 'edit_post', array(&$this, 'save_meta_box') );
-        add_action( 'save_post', array(&$this, 'save_meta_box') );
+        if( is_admin() ) {
+            add_action( 'edit_post', array(&$this, 'save_meta_box') );
+            add_action( 'save_post', array(&$this, 'save_meta_box') );
+        }
 
         /**
          * Add [dy-post-gallery] shortcode for use in post anywhere
@@ -113,7 +117,8 @@ class DYPG_Core {
          */
         add_action( 'wp_enqueue_scripts', function() {
             
-            wp_register_script('swipebox', 'http://localhost/jquery.swipebox.js', array( 'jquery' ), $this->version, true);
+            wp_register_script('swipebox', DYPG_JS . 'jquery.swipebox.min.js', array( 'jquery' ), $this->version, true);
+            wp_register_script('slick', DYPG_JS . 'slick.min.js', array( 'jquery' ), $this->version, true);
             
             /**
              * Localize scrip if needed
@@ -122,7 +127,7 @@ class DYPG_Core {
                     
             ));
 
-            wp_enqueue_script('dy-public-script', DYPG_JS . 'public.js', array( 'jquery', 'swipebox'), $this->version, 'all');
+            wp_enqueue_script('dy-public-script', DYPG_JS . 'public.js', array( 'jquery', 'swipebox', 'slick'), $this->version, 'all');
             
 
             /**
@@ -130,7 +135,9 @@ class DYPG_Core {
              */
 
             wp_register_style('swipebox', DYPG_CSS . 'swipebox.min.css',array(), $this->version, 'all');
-            wp_enqueue_style('dy-public-style', DYPG_CSS . 'public.css',array( 'swipebox' ), $this->version, 'all');
+            wp_register_style('slick', DYPG_CSS . 'slick.css',array(), $this->version, 'all');
+            wp_register_style('slick-theme', DYPG_CSS . 'slick-theme.css',array('slick'), $this->version, 'all');
+            wp_enqueue_style('dy-public-style', DYPG_CSS . 'public.css',array( 'swipebox', 'slick', 'slick-theme' ), $this->version, 'all');
         } );
     }
     
