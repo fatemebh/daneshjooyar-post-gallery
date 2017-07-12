@@ -45,7 +45,7 @@ class DYPG_Core {
         //Set plugin version
         $this->version = $version;
 
-        //Add pages that post gallery should show on these page
+        //Add pages that post gallery should show on those pages
         $this->pages   = array( 'post', 'page');
 
     }

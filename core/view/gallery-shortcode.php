@@ -11,7 +11,7 @@
 				<img src="<?php echo wp_get_attachment_thumb_url( $aid );?>" alt="<?php echo esc_attr( get_the_title( $aid ) );?>">
 			</a>
 		<?php elseif( wp_attachment_is( 'video', $aid ) ):?>
-			<a rel="swipebox-gallery" href="<?php echo wp_get_attachment_url( $aid );?>" class="swipebox swipebox-video" title="<?php echo esc_attr( get_the_title( $aid ) );?>">
+			<a rel="swipebox-gallery" href="<?php echo wp_get_attachment_url( $aid );?>" class="swipebox swipebox-video" data-poster="<?php echo DYPG_IMG;?>poster-image.jpg" title="<?php echo esc_attr( get_the_title( $aid ) );?>">
 				<img src="<?php echo DYPG_IMG;?>play_icon.png" alt="<?php echo esc_attr( get_the_title( $aid ) );?>">
 			</a>
 		<?php endif;?>
