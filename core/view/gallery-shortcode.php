@@ -1,3 +1,9 @@
+<?php
+/**
+ * @author Hamed Moodi <hamedmoodi2011@gmail.com>
+ * @since 1.0
+ */
+?>
 <div class="swipebox-container-images">
 	<?php foreach( $dy_post_gallery_images as $aid ):?>
 		<?php if( wp_attachment_is_image( $aid ) ):?>

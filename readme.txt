@@ -38,7 +38,6 @@ No answer needed
 2. Gallery image sortable list
 3. Use simple shortcode in post anywhere
 4. View your images in post where you determied
-5. Popup image gallery
 
 == Changelog ==
 

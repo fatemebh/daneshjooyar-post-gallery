@@ -1,3 +1,9 @@
+<?php
+/**
+ * @author Hamed Moodi <hamedmoodi2011@gmail.com>
+ * @since 1.0
+ */
+?>
 <div class="shortcode-help">
 	<?php _e('Use <span>[dy-post-gallery]</span> shortcode in post for showing this gallery', 'daneshjooyar-post-gallery');?>
 </div>

@@ -12,6 +12,12 @@
  * Domain Path: /languages
  */
 
+/**
+ * @author Hamed Moodi <hamedmoodi2011@gmail.com>
+ * @version 1.0.3
+ * @since 1.0
+ */
+
 defined(  'ABSPATH'  ) || exit;
 
 /**
@@ -20,7 +26,7 @@ defined(  'ABSPATH'  ) || exit;
 define( 'DYPG_VER', '1.0.3' );
 
 /**
- * Plugin absolute patth
+ * Plugin absolute path
  */
 define( 'DYPG_DIR', plugin_dir_path( __FILE__ ) );
 

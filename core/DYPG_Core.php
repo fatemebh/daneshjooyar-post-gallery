@@ -9,30 +9,35 @@
 /**
  * Core class for "daneshjooyar post gallery" plugin
  *
- * @author Hamed Moodi
- * @uses https://github.com/brutaldesign/swipebox
+ * @author Hamed Moodi <hamedmoodi2011@gmail.com>
+ * @uses https://github.com/daneshjooyar/swipebox
+ * @since 1.0
  */
 class DYPG_Core {
     
     /**
      * Plugin version
      * @param  String
+     * @since 1.0
      */
     private $version;
 
     /**
      * Pages that gallery should active  on these page
      * @param array
+     * @since 1.0
      */
     private $pages;
 
     /**
      * post meta settings prefix
      * @var string
+     * @since 1.0
      */
     private $setting_prefix = '_dypg_';
 
     /**
+     * @since 1.0
      * @param String plugin version
      */
     public function __construct( $version ) {
@@ -47,6 +52,7 @@ class DYPG_Core {
     
     /**
      * Run plugin core
+     * @since 1.0
      * @return Void
      */
     public function run() {
@@ -85,6 +91,7 @@ class DYPG_Core {
     
     /**
      * translate plugin
+     * @since 1.0
      * @return Void
      */
     public function translation() {
@@ -94,6 +101,7 @@ class DYPG_Core {
     }
     
     /**
+     * @since 1.0
      * Add admin/public scripts and style
      */
     public function addScripts() {
@@ -163,6 +171,7 @@ class DYPG_Core {
     }
     
     /**
+     * @since 1.0
      * Add post metabox for gallery image select
      */
     public function addMetaBoxes(){
@@ -175,6 +184,7 @@ class DYPG_Core {
     
     /**
      * render metabox view
+     * @since 1.0
      * @param  WP_Post  $post  post object
      */
     public function gallery_metabox_view( $post ){
@@ -188,6 +198,7 @@ class DYPG_Core {
 
     /**
      * save metabox content in database
+     * @since 1.0
      * @param int $post_id post id that save
      */
     public function save_meta_box( $post_id ) {
@@ -207,6 +218,7 @@ class DYPG_Core {
 
     /**
      * render shortcode in post
+     * @since 1.0
      * @param  array $atts    attributes send by this shortcode tags
      * @param  string $content content between shortcodes tag *Note: in this shortcode we do not use this argument
      * @return string          rendered html code for showing gallery
@@ -225,9 +237,10 @@ class DYPG_Core {
 
     /**
      * Get Setting in post meta
+     * @since 1.0
      * @param  string  $setting_id Setting id
      * @param  integer $default    post ID
-     * @return Mix              
+     * @return Mix
      */
     private function get_setting( $setting_id, $default = 0 ) {
 
@@ -245,6 +258,7 @@ class DYPG_Core {
 
     /**
      * Set new setting in post meta
+     * @since 1.0
      * @param string $setting_id setting id
      * @param Mix $new_value  new value
      */
