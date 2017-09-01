@@ -50,6 +50,6 @@ $dypgCore = new DYPG_Core( DYPG_VER );
 
 /**
  * Run daneshjooyar post gallery plugin
- * This is Other comment
+ * This is Other comment for test
  */
 $dypgCore->run();
