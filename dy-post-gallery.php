@@ -4,7 +4,7 @@
  * Plugin URI: http://daneshjooyar.com
  * Author: Hamed Moodi
  * Author URI: http://ircodex.ir
- * Description: this is simple plugin for add gallery for any post such as product gallery
+ * Description: this is simple plugin for add gallery for any post such as product gallery for wordpress
  * Version: 1.0.3
  * License: GPL2
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
