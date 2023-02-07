@@ -42,4 +42,4 @@ No answer needed
 == Changelog ==
 
 = 1.0 =
-* First release
+* First release of plugin
