@@ -19,11 +19,11 @@ and open the template in the editor.
 }
 
 div#dy-post-gallery-metabox ul li {
-    display: inline-block;
+    display: block;
 }
 
 a.dy-post-gallery-delete {
-    position: absolute;
+    position: relative;
     top: 7px;
     left: 7px;
     background: #FFF;
