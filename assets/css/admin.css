@@ -23,7 +23,7 @@ div#dy-post-gallery-metabox ul li {
 }
 
 a.dy-post-gallery-delete {
-    position: relative;
+    position: absolute;
     top: 7px;
     left: 7px;
     background: #FFF;
@@ -57,7 +57,7 @@ li.add-new .dy-post-gallery-image{
     background: #f7fff6;
     padding: 5px 15px;
     border: 1px solid #77ff6b;
-    margin: 15px;
+    margin: 20px;
     -webkit-border-radius: 2px;
     -moz-border-radius: 2px;
     -o-border-radius: 2px;
